@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" type="text/css" href="normalize.css">
 	<link rel="stylesheet" type="text/css" href="2cols.css">
 	<link rel="stylesheet" type="text/css" href="queries.css">
@@ -14,21 +15,140 @@
 	<script>
 		$(document).ready(function()
 		{
-            $(".edit1").hover(function(){
-            	$(".edit1").css("color","#BCBCBE");
-            	$(".edit1").css("font-size","220%");
-            	$("#div1").fadeIn();
+            $(".Top").hover(function(){
+            //	$(".edit1").css("color","#BCBCBE");
+            	$(".edit1").animate({color: "#BCBCBE",fontSize: '220%'}, "200");
+            	//$(".edit1").css("font-size","220%");
+            	$(".me").css("color","white");
+            	$(".me").animate({ color: "red", letterSpacing: '30px' }, "200");
+            	$(".me1").animate({color: "#BCBCBE"}, "200");
+            	$("#div1").slideDown("200");
             },
             function(){
+            	$(".edit1").animate({color: "white", fontSize: '200%'}, "200");
+            	$(".me").animate({ color: "white", letterSpacing: '5px' }, "200");
+            	$(".me1").animate({color: "white"}, "200");
             	$(".edit1").css("color","white");
-            	$(".edit1").css("font-size","200%");
-            	$("#div1").fadeOut();
+            	
+            	$("#div1").slideUp("slow");
             })
 		})
-	</script>
+
+</script>
 	
 </head>
 <body>
+
+	
+
+	
+
+
+<script>
+$(document).ready(function() {
+//Preloader
+$(window).on("load", function() {
+preloaderFadeOutTime = 500;
+function hidePreloader() {
+var preloader = $('.spinner-wrapper');
+preloader.fadeOut(preloaderFadeOutTime);
+}
+hidePreloader();
+});
+
+
+function displaySplashPage() {
+$('.say-hello').delay(2800).fadeOut('slow');
+}
+
+
+$(window).on("load", function() {
+  $.when($('.spinner-wrapper').fadeOut(500)).then(displaySplashPage);
+});
+
+});</script>
+
+
+<div class="say-hello">
+	<h1 class="ml8">
+  <span class="letters-container">
+    <span class="letters letters-left">Hi</span>
+    <span class="letters bang">!</span>
+  </span>
+  <span class="circle circle-white"></span>
+  <span class="circle circle-dark"></span>
+  <span class="circle circle-container"><span class="circle circle-dark-dashed"></span></span>
+</h1>
+</div>
+
+
+<div class="spinner-wrapper">
+		<div class="spinner">
+  		<div class="dot1"></div>
+  		<div class="dot2"></div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+<script type="text/javascript">
+
+	anime.timeline({loop: false})
+  .add({
+    targets: '.ml8 .circle-white',
+    scale: [0, 3],
+    opacity: [1, 0],
+    easing: "easeInOutExpo",
+    rotateZ: 360,
+    duration: 1100
+  }).add({
+    targets: '.ml8 .circle-container',
+    scale: [0, 1],
+    duration: 1100,
+    easing: "easeInOutExpo",
+    offset: '-=1000'
+  }).add({
+    targets: '.ml8 .circle-dark',
+    scale: [0, 1],
+    duration: 1100,
+    easing: "easeOutExpo",
+    offset: '-=600'
+  }).add({
+    targets: '.ml8 .letters-left',
+    scale: [0, 1],
+    duration: 1200,
+    offset: '-=550'
+  }).add({
+    targets: '.ml8 .bang',
+    scale: [0, 1],
+    rotateZ: [45, 15],
+    duration: 1200,
+    offset: '-=1000'
+  }).add({
+    targets: '.ml8',
+    opacity: 0,
+    duration: 1000,
+    easing: "easeOutExpo",
+    delay: 1400
+  });
+
+anime({
+  targets: '.ml8 .circle-dark-dashed',
+  rotateZ: 360,
+  duration: 8000,
+  easing: "linear",
+  loop: false
+});
+
+</script>
+
+<script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
 
 	<header>
 		<nav>
@@ -42,7 +162,7 @@
 			</div>
 		</nav>
 		<div class="Top">
-		<h1 class="edit1">365 Days of <span style="letter-spacing: 5px;font-weight: 1000;">Art</span></h1><h1><div id="div1" style="display: none;">by Richi</div></h1>
+		<h1 class="edit1">365 Days of <span class="me" style="letter-spacing: 5px;font-weight: 1000;">Art</span></h1><h1><div id="div1" style="display: none;">by <span class="me1">Richi</span></div></h1>
 		<a class="btn btn-full" href="#section-art">See Art</a>
 		<a class="btn btn-ghost" href="#section-idea">About Me</a>
 
@@ -299,6 +419,6 @@
 	</footer>
 
 
-<script src="https://unpkg.com/ionicons@4.2.4/dist/ionicons.js"></script>
+	  
 </body>
 </html>
